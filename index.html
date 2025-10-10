@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="lib/fullpage.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/fullpage.js"></script>
+    <script>
+        window.onload = () => {
+
+
+            var myFullpage = new fullpage('#fullpage', {
+                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
+                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
+                navigation: true,
+                navigationTooltips: ['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7'],
+                showActiveTooltip: true,
+                menu: '#menu'
+            });
+
+
+
+
+            const menuBtn = document.querySelector('.menu_btn');
+            const nav = document.querySelector('.nav');
+            const closeBtn = document.querySelector('.nav .close_btn');
+
+            // 메뉴 열기
+            menuBtn.addEventListener('click', (e) => {
+                e.preventDefault();  // a태그 기본동작 막기
+                nav.classList.add('active');
+                document.body.classList.add('no-scroll');  // 스크롤 막을 때 사용 가능
+            });
+
+            // 메뉴 닫기
+            closeBtn.addEventListener('click', () => {
+                nav.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+
+
+
+            //탭메뉴
+            let tabMenu = document.querySelectorAll('.tab_menu li');
+            let tabCont = document.querySelectorAll('.depth-01');
+
+            tabMenu.forEach((tab, idx) => {
+                tab.addEventListener('click', () => {
+                    // 모든 탭과 컨텐츠 active 제거
+                    tabMenu.forEach(t => t.classList.remove('active'));
+                    tabCont.forEach(c => c.classList.remove('active'));
+
+                    // 클릭된 탭과 해당 컨텐츠에 active 부여
+                    tab.classList.add('active');
+                    tabCont[idx].classList.add('active');
+                });
+            });
+
+            const popup = document.querySelector('.popup');
+            const popupBtn = document.querySelector('.popup button');
+            if (popup && popupBtn) {
+                popupBtn.addEventListener('click', () => {
+                    popup.style.display = 'none';
+                });
+            }//popup
+
+
+
+            let = tabMenu = document.querySelectorAll('.tab_menu li');
+            let = tabCont = document.querySelectorAll('.list');
+
+            for (let i = 0; i < tabMenu.length; i++) {
+
+                tabMenu[i].addEventListener('click', () => {
+
+
+                    tabMenu.forEach(tabMenuIndex => {
+                        tabMenuIndex.classList.remove('active');
+                    });
+
+                    tabMenu[i].classList.add('active');
+
+                    tabCont.forEach(tabContIndex => {
+                        tabContIndex.classList.remove('active');
+                    });
+
+                    tabCont[i].classList.add('active');
+
+
+
+
+                });
+            }
+
+        }; //script end
+    </script>
+
+
+
+
+</head>
+
+
+<body>
+
+
+    <div class="header_menu">
+
+        <div class="inner">
+
+            <div class="menu_btn">
+                <a href="#"><img src="img/음표.png" alt="헤더메뉴음표아이콘">MENU</a>
+            </div><!-- .menu_btn end-->
+
+            <h1 class="logo">
+                <a href="#"><img src="img/한음로고.png" alt="한음로고"></a>
+            </h1><!-- .logo end -->
+
+            <div class="menu_right">
+                <div class="search_box">
+                    <input type="text" name="" id="" placeholder="궁금한 사항 키워드 검색으로 바로가기">
+                    <img src="img/돋보기.png" alt="검색 아이콘">
+                </div><!-- .search_box end -->
+                <ul>
+                    <li class="tooltip-wrap"><a href="#"><img src="img/사람.png" alt="헤더-로그인아이콘"></a><img
+                            src="img/tooltip.svg" alt="툴팁 이미지" class="tooltip">
+                    </li><!-- tooltip-wrap -->
+
+                    <li class="tooltip-wrap"><a href="#"><img src="img/언어.png" alt="헤더-언어아이콘"><img
+                                src="img/화살표아해.png" alt="헤더-언어체인지"></a><img src="img/laguage.svg" alt="툴팁 이미지"
+                            class="tooltip">
+                    </li><!-- .tooltip-wrap -->
+
+                </ul>
+            </div><!-- menu_right end -->
+
+
+
+            <!-- 메뉴네비게이션 -->
+
+            <div class="nav">
+
+                <div class="close_btn">
+                    <img src="img/close_btn.png" alt="닫기버튼">
+                </div><!-- close_bten end -->
+
+
+                <div class="list">
+
+                    <ul class="tab_menu">
+                        <li class="active"><a href="#">협회소개</a></li>
+                        <li class="active"><a href="#">저작물검색</a></li>
+                        <li class="active"><a href="#">정보광장</a></li>
+                        <li class="active"><a href="#">운영공개</a></li>
+                        <li class="active"><a href="#">자료실</a></li>
+                        <li class="active"><a href="#">신탁자회원</a></li>
+                        <li class="active"><a href="#">거래처회원</a></li>
+                    </ul><!-- tab_menu -->
+
+
+
+                    <ul class="depth-01 active">
+                        <li><a href="#">・ KOMKA</a></li>
+                        <li><a href="#">・ 협회현황</a></li>
+                        <li><a href="#">・ 정보소개</a></li>
+                        <li><a href="#">・ 찾아오시는 길</a></li>
+                        <li><a href="#">・ ARS단축번호 안내</a></li>
+                        <li><a href="#">・ RECRUT</a></li>
+                    </ul>
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 전체검색</a></li>
+                        <li><a href="#">・ 유보저작물 현황</a></li>
+                        <li><a href="#">・ 가등록 저작물</a></li>
+                        <li><a href="#">・ 신탁해지자의 저작물</a></li>
+                        <li><a href="#">・ 위탁관리 범위 제외제작물</a></li>
+                    </ul><!-- depth-01 end -->
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 공자사항</a></li>
+                        <li><a href="#">・ 유관단체소식</a></li>
+                        <li><a href="#">・ 뉴스/보도자료</a></li>
+                        <li><a href="#">・ 민원접수</a></li>
+                        <li><a href="#">・ 자주하는질문</a></li>
+                        <li><a href="#">・ 음악저작권 이해하기</a></li>
+                        <li><a href="#">・ 저작권강의 신청</a></li>
+                        <li><a href="#">・ KOMKA HALL 대관</a></li>
+                    </ul><!-- depth-01 end -->
+
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 협회규정</a></li>
+                        <li><a href="#">・ 사업보고서</a></li>
+                        <li><a href="#">・ 결산서</a></li>
+                        <li><a href="#">・ 감사보고서</a></li>
+                        <li><a href="#">・ 중요정보</a></li>
+
+                    </ul><!-- depth-01 end -->
+
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 신탁관련서식</a></li>
+                        <li><a href="#">・ 이용허락신청서식</a></li>
+                        <li><a href="#">・ 침해처리 소명서식</a></li>
+                        <li><a href="#">・ 협회규정</a></li>
+                        <li><a href="#">・ 저작권법</a></li>
+                        <li><a href="#">・ 포스터</a></li>
+                        <li><a href="#">・ KOMA화보</a></li>
+                        <li><a href="#">・ KOKA발간물</a></li>
+                        <li><a href="#">・ 논문공모전 수상집</a></li>
+                        <li><a href="#">・ 관련사이트</a></li>
+                    </ul><!-- depth-01 end -->
+
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 신탁계약서</a></li>
+                        <li><a href="#">・ 신탁저작물현황</a></li>
+                        <li><a href="#">・ 저작물등록</a></li>
+                        <li><a href="#">・ 해외이용 신고서</a></li>
+                        <li><a href="#">・ 실시간 이용 현황</a></li>
+                        <li><a href="#">・ 지급내역서</a></li>
+                        <li><a href="#">・ 증명서 발급</a></li>
+                        <li><a href="#">・ 지급계좌 변경요청</a></li>
+                        <li><a href="#">・ 신탁 게시판</a></li>
+                        <li><a href="#">・ 매절계약 피해사례</a></li>
+                    </ul><!-- depth-01 end -->
+
+
+
+                    <ul class="depth-01">
+                        <li><a href="#">・ 이용허락 신청안내</a></li>
+                        <li><a href="#">・ 복제이용허락</a></li>
+                        <li><a href="#">・ 광고이용허락</a></li>
+                        <li><a href="#">・ 선거로고송 이용허락</a></li>
+                        <li><a href="#">・ 영화이용허락</a></li>
+                        <li><a href="#">・ 무대공연 이용허락</a></li>
+                        <li><a href="#">・ 포토앨범 이용허락</a></li>
+                        <li><a href="#">・ 이용허락 현황</a></li>
+                        <li><a href="#">・ 증지번호조회</a></li>
+                        <li><a href="#">・ 공연사용료 산출</a></li>
+                        <li><a href="#">・ 업소 입금 및 계산서</a></li>
+                    </ul><!-- depth-01 end -->
+
+
+                </div><!-- .list end -->
+            </div><!-- .nav end -->
+        </div><!-- inner end -->
+    </div><!-- header_menu end -->
+
+    <!-- 메인1 -->
+    <div id="fullpage">
+        <section class="section" id="section0">
+            <div class="popup">
+                <img src="img/popup.png" alt="팝업이미지">
+                <button>닫기</button>
+            </div><!-- .popup end -->
+
+            <div class="main_visual">
+                <video src="img/main.mp4" autoplay muted loop></video>
+            </div><!-- .main_visual end -->
+            <div class="intro">
+
+
+                <h1>한국음악 저작권 음악 협회는</h1>
+                <p>
+                    여러분들의 소중한 창작물들을 신뢰와 책임아래 안전하게 보호합니다.
+                </p>
+            </div>
+        </section><!-- section 0 end -->
+
+        <!-- 메인2 -->
+        <section class="section" id="section1">
+            <div class="inner">
+                <div class="item">
+                    <div class="text">
+                        <h2>사용자별 자주찾는 메뉴</h2>
+                        <p><a href="#">전체메뉴바로가기</a></p>
+
+                    </div><!-- .text end -->
+                </div><!-- .item end -->
+
+                <div class="item">
+                    <div class="list">
+                        <div class="image">
+                            <img src="img/1마샬.png" alt="신탁자회원">
+                            <div class="text_wrap">
+                                <h3>신탁자회원</h3>
+                                <ul>
+                                    <li>신탁계약 안내 및 저작물 현황</li>
+                                    <li>저작물 등록</li>
+                                    <li>해외이용 신고서</li>
+                                    <li>지급내역서</li>
+                                    <li>증명서발급</li>
+                                    <li>실시간 이용정보</li>
+                                    <li>고객지원</li>
+                                    <li>매절계약 피해사례</li>
+                                </ul>
+                            </div><!-- .text_wrap end -->
+                        </div><!-- .imgae ebd -->
+                    </div><!-- .list end -->
+                </div><!-- .item end -->
+
+
+                <div class="item">
+                    <div class="list">
+                        <div class="image">
+                            <img src="img/1피아노.png" alt="거래처(사업자)회원">
+                            <div class="text_wrap">
+                                <h3>거래처(사업자)회원</h3>
+                                <ul>
+                                    <li>이용허락 신청 및 안내</li>
+                                    <li>이용료 계산기</li>
+                                    <li>자료제출</li>
+                                    <li>업종별 가이드</li>
+                                    <li>연소 입금 및 계산서</li>
+                                    <li>신고 및 문의</li>
+
+                                </ul>
+                            </div><!-- .text_wrap end -->
+                        </div><!-- .image end -->
+                    </div><!-- .list end -->
+                </div><!-- .item end -->
+
+
+                <div class="item">
+                    <div class="list">
+                        <div class="image">
+                            <img src="img/1테이프.png" alt="일반대중/정보열람">
+                            <div class="text_wrap">
+                                <h3>일반대중/정보열람자</h3>
+                                <ul>
+                                    <li>저작물 검색</li>
+                                    <li>자료실</li>
+
+                                </ul>
+                            </div><!-- .text_wrap end -->
+                        </div><!-- .image end -->
+                    </div><!-- .list end -->
+                </div><!-- .item end -->
+
+
+                <div class="item">
+                    <div class="list">
+                        <div class="image">
+                            <img src="img/1레코드.png" alt="운영공개">
+                            <div class="text_wrap">
+                                <h3>운영공개</h3>
+                                <ul>
+                                    <li>협회규정</li>
+                                    <li>사업보고서</li>
+                                    <li>결산서</li>
+                                    <li>결산 보고서</li>
+                                    <li>중요정보</li>
+
+                                </ul>
+                            </div><!-- .text_wrap end -->
+                        </div><!-- .image end -->
+                    </div><!-- .list end -->
+                </div><!-- .item end -->
+
+
+                <div class="item">
+                    <div class="list">
+                        <div class="image">
+                            <img src="img/1컴퓨터.png" alt="정보광장">
+                            <div class="text_wrap">
+                                <h3>정보광장</h3>
+                                <ul>
+                                    <li>공지사항</li>
+                                    <li>유관단체소식</li>
+                                    <li>뉴스/보도자료</li>
+                                    <li>음악저작권 이해하기</li>
+                                    <li>민원접수</li>
+                                    <li>자주하는 질문</li>
+                                    <li>저작궈 강의 신청</li>
+                                    <li>KOMCA HALL 대관</li>
+
+                                </ul>
+                            </div><!-- .text_wrap end -->
+                        </div><!-- .image end -->
+                    </div><!-- .list end -->
+                </div><!-- .item end -->
+
+
+
+
+            </div><!-- .inner end -->
+        </section><!-- section1 end -->
+
+        <!-- 메인3 -->
+        <section class="section" id="section2">
+            <div class="inner">
+                <div class="left">
+                    <div class="title">
+                        <ul>
+                            <li><img src="img/메인2-밑줄강조.svg" alt="밑줄데코"></li>
+                            <li> KOMCA TODAY </li>
+                        </ul>
+                    </div><!-- .title end -->
+                    <div class="image">
+                        <ul>
+                            <li><img src="img/콤카투데이.svg" alt="콤카투데이표지"></li>
+                            <li><img src="img/콤투-2.svg" alt="콤카투데이마지막장"></li>
+                            <li><a href="#">click to more view</a></li>
+                        </ul>
+                    </div><!-- ,image end -->
+                </div><!-- .left end -->
+                <div class="list">
+                    <div class="item" class="active"><a href="#"><img src="img/main3-1.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-2.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-4.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-5.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-6.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-7.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-8.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-9.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/main3-10.svg" alt="콤카투데이"></a></div>
+                    <div class="item"><a href="#"><img src="img/12.svg" alt="콤카투데이"></a></div>
+                </div><!-- .list end -->
+            </div><!-- .inner end -->
+        </section><!-- #section2 end -->
+
+
+
+
+
+        <section class="section" id="section3">
+            <div class="inner">
+                <div class="image_wrap">
+                    <h2>Let’s KOMCA MALL!</h2>
+                    <div class="list">
+                        <div class="item">
+                            <img src="img/4-1.jpeg" alt="쇼핑하기">
+                            <p>Shopping</p>
+                        </div>
+                        <div class="item"><img src="img/4-2.jpeg" alt="비행">
+                            <p>Accommodation / Travel</p>
+                        </div>
+                        <div class="item"><img src="img/4-3.jpeg" alt="의료">
+                            <p>Hospital / Medical</p>
+                        </div>
+                        <div class="item"><img src="img/4-4.jpeg" alt="운동기기">
+                            <p>Sports Center</p>
+                        </div>
+                        <div class="item"><img src="img/4-5.jpeg" alt="콘서트">
+                            <p>Performance / Concert</p>
+                        </div>
+                        <div class="item"><img src="img/4-6.jpeg" alt="악기">
+                            <p>Music Instruments</p>
+                        </div>
+                        <div class="item"><img src="img/4-7.jpeg" alt="자동차">
+                            <p>Automobile</p>
+                        </div>
+                        <div class="item"><img src="img/4-8.jpeg" alt="스포츠">
+                            <p>Sports</p>
+                        </div>
+                    </div><!-- .list end -->
+                </div><!-- .image_wrap end -->
+                <div class="bottom">
+                    <div class="text">
+                        <h3>#Hot Keyword</h3>
+                        <p>지금 KOMCA MALL에서 가장 인기있는 키워드를 만나보세요.</p>
+                    </div><!-- .text end -->
+
+                    <div class="key">
+                        <ul class="box">
+                            <li>회원님들이 많이 찾는서비스는?</li>
+                            <li><a href="#">#숙박/여행</a></li>
+                            <li><a href="#">#기획전</a></li>
+                            <li><img src="img/마이크.png" alt=""></li>
+                            <li><img src="img/하트.png" alt=""></li>
+                        </ul><!-- .box end -->
+
+                        <ul class="box">
+                            <li>오늘은 어떤 특가 상품이 기다리고있을까요?</li>
+                            <li><img src="img/전구.png" alt=""></li>
+                            <li><img src="img/sun-dynamic-color.png" alt=""></li>
+                            <li><a href="#">#가전제품</a></li>
+                            <li><a href="#">#삼성전자</a></li>
+                        </ul><!-- .box end -->
+
+                        <ul class="box">
+                            <li>한국 음악 저작권협회 App에서도 만나요!</li>
+                            <li><a href="#">#App Store</a></li>
+                            <li><a href="#">#Google Play</a></li>
+                            <li><img src="img/컴퓨터.png" alt=""></li>
+                            <li><img src="img/헤드셋.png" alt=""></li>
+                        </ul><!-- .box end -->
+                    </div><!-- .key end -->
+                </div><!-- .bottom end -->
+            </div><!-- .inner end -->
+        </section><!-- #section3 end -->
+
+
+        <!-- 메인5 -->
+
+        <section class="section" id="section4">
+            <div class="inner">
+                <h3>자주 묻는 질문</h3>
+                <ul class="tab_menu">
+                    <li class="active">전체</li>
+                    <li>음악사용승인</li>
+                    <li>저작물등록</li>
+                    <li>저작물검색</li>
+                    <li>분배문의</li>
+                    <li>회원가입</li>
+                    <li>기타문의</li>
+                    <li>해외문의</li>
+
+                </ul><!-- .tab_menu end -->
+
+                <div class="list active">
+
+                    <div class="item">과세 사업자 회원의 협회에 대한 세금계산서 발행 안내</div>
+                    <div class="item">어문저작물(시,소설 등)을 이용한 저작물의 경우 어떤 서류가 필요한가요?</div>
+                    <div class="item">유튜브에 ‘내가 직접 연주한’ 음원을 사용하려고 하는데, 내가 직접 연주한 것이니 허락을 받지 않고 이용해도 저작권 문제는 없나요?</div>
+                    <div class="item">유튜브에 업로드한 영상이 저작권 침해라고 뜹니다.</div>
+                    <div class="item">유튜브에 커버(COVER) 노래/연주/댄스 영상을 업로드 하고 싶습니다.</div>
+                    <div class="item">유튜브 영상 수익은 어떻게 되는 건가요?</div>
+
+                </div><!-- .list-1 end -->
+
+                <div class="list">
+
+                    <div class="item">선거에서 선거 홍보용 음악을 사용하려 합니다. 절차 및 비용에 대해 알고싶습니다</div>
+                    <div class="item">책에 악보와 가사를 사용할 때 절차 및 비용을 알려주세요.</div>
+                    <div class="item">국내가요를 리메이크하여 음반에 낼 경우 어떤 절차를 거쳐야 되나요?</div>
+                    <div class="item">협회에 등록된 음악으로 영상저작물에 음악을 사용하는 경우,승인 절차 및 복제, 배포 사용료를 알고 싶습니다.</div>
+                    <div class="item">외국곡 샘플링, 리메이크 하고싶은데, 그 절차는 어떠한가요?</div>
+                    <div class="item">홈페이지 저작물검색에서 조회가 되지 않아요. 저작권이 없는 곡인가요?</div>
+
+                </div><!-- .list-2 end -->
+
+                <div class="list">
+
+                    <div class="item">어문저작물(시,소설 등)을 이용한 저작물의 경우 어떤 서류가 필요한가요?</div>
+                    <div class="item">음악출판사와의 조건부양도계약 내용이 변경된 경우 어떤 서류가 필요한가요?</div>
+                    <div class="item">해외에서만 공표한 저작물도 협회에 등록해야 하나요?</div>
+                    <div class="item">국외 저작자가 참여한 저작물 또는 국외 저작자로만 이루어진 저작물의 등록은 어떻게 하나요?</div>
+                    <div class="item">2차적 저작물 등록 시 추가적으로 제출해야 하는 서류가 있나요?</div>
+                    <div class="item">저작물의 저작사 정보나 지분 정보는 어떻게 변경하나요?</div>
+
+                </div><!-- .list-3 end -->
+
+                <div class="list">
+
+                    <div class="item">국외 저작물에 대한 검색 결과에서 복제권 부분은 비관리가 대부분인데 관리가 안되나요?</div>
+                    <div class="item">홈페이지 저작물검색에서 조회가 되지않아요. 저작권이 없는 곡인가요?</div>
+                    <div class="item">C, A, CA, 등은 무엇을 의미하나요?</div>
+
+
+                </div><!-- .list-4 end -->
+
+                <div class="list">
+
+                    <div class="item">'방송사 사용곡목 확인서'(주제, 배경, 시그널)또는 '큐시트'는 언제까지 제출해야 하나요?</div>
+                    <div class="item">방송에서 제가 작사 또는 작곡한 노래가 사용되었는데, 얼마나 기다려야 분배를 받을 수 있나요?</div>
+                    <div class="item">저작권료의 분배대상자는 어떻게 되나요?</div>
+                    <div class="item">매체별 분배자료는 무엇인가요?</div>
+                    <div class="item">저작물 등록을 위한 구비서류는 무엇인가요?</div>
+                    <div class="item">저작자에게 분배되는 저작권 사용료의 매체별 분배시기가 어떻게 되나요?</div>
+
+                </div><!-- .list-5 end -->
+
+                <div class="list">
+
+                    <div class="item">과세 사업자 회원의 협회에 대한 세금계산서 발행 안내</div>
+                    <div class="item">어문저작물(시,소설 등)을 이용한 저작물의 경우 어떤 서류가 필요한가요?</div>
+                    <div class="item">유튜브에 ‘내가 직접 연주한’ 음원을 사용하려고 하는데, 내가 직접 연주한 것이니 허락을 받지 않고 이용해도 저작권 문제는 없나요?</div>
+                    <div class="item">유튜브에 업로드한 영상이 저작권 침해라고 뜹니다.</div>
+                    <div class="item">유튜브에 커버(COVER) 노래/연주/댄스 영상을 업로드 하고 싶습니다.</div>
+                    <div class="item">유튜브 영상 수익은 어떻게 되는 건가요?</div>
+
+                </div><!-- .list-6 end -->
+
+                <div class="list">
+
+                    <div class="item">미성년자인 경우에도 회원 가입이 가능합니까? 가능한 경우 어떠한 서류를 제출해야 하나요?</div>
+                    <div class="item">현재 외국음악저작권단체에 가입된 경우, 귀 협회에 가입 가능한가요?</div>
+                    <div class="item">예명을 등록하려면 어떤 절차를 밟아야 하나요?</div>
+                    <div class="item">회원(신탁)으로 가입하려면 어떻게 해여하나요? 또한 필요한 서류는 무엇인가요?</div>
+
+                </div><!-- .list-7 end -->
+
+                <div class="list">
+
+                    <div class="item">과세 사업자 회원의 협회에 대한 세금계산서 발행 안내</div>
+                    <div class="item">저작권위원회와 음악저작권협회의 등록의 차이점이 무엇인가요?</div>
+                    <div class="item">회보를 받지 못하고있는데, 어떻게 하면 회보를 다시 받아볼 수가 있을까요?</div>
+                    <div class="item">해외에서의 한국 저작물 사용에 관한 저작권 사용승인/징수 및 분배 절차는?</div>
+                    <div class="item">회비공제 신청절차</div>
+                    <div class="item">저작권 사용료 지급내역서 조회방법</div>
+
+                </div><!-- .list-8 end -->
+
+
+            </div><!-- .inner end -->
+
+        </section><!-- #section4 end -->
+
+
+        <!-- 메인6 -->
+        <section class="section" id="section5">
+            <div class="inner">
+                <h2>CONTACT</h2>
+                <div class="item-1">
+                <div class="kakao">
+                <div id="daumRoughmapContainer1754983291987" class="root_daum_roughmap root_daum_roughmap_landing">
+                </div>
+                <script charset="UTF-8" class="daum_roughmap_loader_script"
+                    src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp": "1754983291987",
+                        "key": "6ut5men4tk4",
+                        "mapWidth": "1020",
+                        "mapHeight": "200"
+                    }).render();
+                </script>
+                </div><!-- .kakao end -->
+                <div class="btn">
+                    <ul>
+                        <li>FAQ</li>
+                        <li>Notice</li>
+                        <li>Komca Mall</li>
+                        <li>App</li>
+                    </ul>
+                </div><!-- .btn end -->
+                </div><!--,item-1 end -->
+                <div class="import">
+                    <ul>
+                        <li>• 협회는 협회 또는 제3자가 제공하는 온·오프라인 서비스/플랫폼 등에서  협회가 관리하는 저작물을 대상으로 자동화 도구(AI, 로봇, 매크로, 스파이더,  스크래퍼 등)를 활용하는 행위를  허용하지 않습니다.</li>
+                        <li>• 협회가 관리하는 음악저작물을 인공지능(AI) 학습에 사용하는 경우 반드시  협회로부터 사전 서면 이용허락을 받아야 합니다.</li>
+                        <li>webmaster@komca.or.kr</li>
+                    </ul>
+                </div><!-- .impot end -->
+                <div class="sns">
+                    <ul>
+                        <li><a href="#"><img src="img/Instagram.png" alt=""></a></li>
+                        <li><a href="#"><img src="img/Youtube.png" alt=""></a></li>
+                        <li><a href="#"><img src="img/Facebook.png" alt=""></a></li>
+                        <li><a href="#"><img src="img/LineOctDenoiserBeauty_002 2.png" alt=""></a></li>
+
+                    </ul>
+                </div><!-- sns end -->
+                    <ul class="gnb">
+                        <li>이용약관</li>
+                        <li>개인정보처리방침</li>
+                        <li>서면결의서</li>
+                        <li>원격지원서비스</li>
+                    </ul><!-- .gnb end -->
+            </div><!-- .inner end -->
+        </section><!-- #section5 end -->
+
+
+
+
+         <footer class="footer section fp-auto-height" id="footer">
+            <div class="inner">
+                <div class="image">
+                   <ul>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    <li><img src="img/logo1.svg" alt="한음로고"></li>
+                   </ul>
+                </div><!-- .image end -->
+                <div class="text">
+                    <ul>
+                        <li>[07647] 서울특별시 강서구 공항대로 332(내발산동, 한국음악저작권협회)</li>
+                        <li class="tell">TEL : 02-2660-0400</li>
+                        <li class="tell">FAX : 02-2660-0401</li>
+                        <li>COPYRIGHT 2025 BY 김소원. Korea Music Copyright Association, All rights reserved.</li>
+                    </ul>
+                </div><!-- .text end -->
+            </div><!-- .inner end -->
+        </footer><!-- .footer end -->
+    </div><!-- #Fullpage -->
+</body>
+
+</html>
