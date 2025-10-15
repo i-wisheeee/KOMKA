@@ -13,10 +13,10 @@
 
 
             var myFullpage = new fullpage('#fullpage', {
-                sectionsColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
-                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
+                sectionsColor: ['#fff', '#fff', '#010102', '#fff', '#fff', '#fff', '#fff'],
+                anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage'],
                 navigation: true,
-                navigationTooltips: ['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7'],
+                navigationTooltips: ['MainPage', '사용자별 자주찾는 메뉴', 'KOMCA TODAY', 'KOMKA MALL', '자주 묻는 질문', 'CONTACT'],
                 showActiveTooltip: true,
                 menu: '#menu'
             });
@@ -95,6 +95,31 @@
                 });
             }
 
+            //탑버튼
+            window.onload = () => {
+                const topBtn = document.getElementById('goTop');
+
+                var myFullpage = new fullpage('#fullpage', {
+                    sectionsColor: ['#fff', '#fff', '#010102', '#fff', '#fff', '#fff', '#fff'],
+                    anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage'],
+                    navigation: true,
+                    navigationTooltips: ['MainPage', '사용자별 자주찾는 메뉴', 'KOMCA TODAY', 'KOMKA MALL', '자주 묻는 질문', 'CONTACT'],
+                    showActiveTooltip: true,
+                    menu: '#menu',
+
+                    afterLoad: function (origin, destination, direction) {
+                        if (destination.index >= 1) {
+                            topBtn.classList.add('show');  // 2페이지 이상이면 버튼 보이기
+                        } else {
+                            topBtn.classList.remove('show'); // 1페이지면 숨기기
+                        }
+                    }
+                });
+
+                topBtn.addEventListener('click', () => {
+                    fullpage_api.moveTo(1);
+                });
+            };
         }; //script end
     </script>
 
@@ -269,7 +294,7 @@
             </div><!-- .popup end -->
 
             <div class="main_visual">
-                <video src="img/main.mp4" autoplay muted loop></video>
+                <video class="video" src="img/main.mp4" autoplay muted loop></video>
             </div><!-- .main_visual end -->
             <div class="intro">
 
@@ -467,6 +492,7 @@
                         <div class="item"><img src="img/4-8.jpeg" alt="스포츠">
                             <p>Sports</p>
                         </div>
+                
                     </div><!-- .list end -->
                 </div><!-- .image_wrap end -->
                 <div class="bottom">
@@ -617,33 +643,26 @@
             <div class="inner">
                 <h2>CONTACT</h2>
                 <div class="item-1">
-                <div class="kakao">
-                <div id="daumRoughmapContainer1754983291987" class="root_daum_roughmap root_daum_roughmap_landing">
-                </div>
-                <script charset="UTF-8" class="daum_roughmap_loader_script"
-                    src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-                <script charset="UTF-8">
-                    new daum.roughmap.Lander({
-                        "timestamp": "1754983291987",
-                        "key": "6ut5men4tk4",
-                        "mapWidth": "1020",
-                        "mapHeight": "200"
-                    }).render();
-                </script>
-                </div><!-- .kakao end -->
-                <div class="btn">
-                    <ul>
-                        <li>FAQ</li>
-                        <li>Notice</li>
-                        <li>Komca Mall</li>
-                        <li>App</li>
-                    </ul>
-                </div><!-- .btn end -->
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.8934449778494!2d126.8417399758734!3d37.55757417204101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9c6d04ff78bb%3A0x721cad1be6302246!2z7ZWc6rWt7J2M7JWF7KCA7J6R6raM7ZiR7ZqM!5e0!3m2!1sko!2skr!4v1754982573821!5m2!1sko!2skr"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+                    </div><!-- .map end -->
+                    <div class="btn">
+                        <ul>
+                            <li>FAQ</li>
+                            <li>Notice</li>
+                            <li>Komca Mall</li>
+                            <li>App</li>
+                        </ul>
+                    </div><!-- .btn end -->
                 </div><!--,item-1 end -->
                 <div class="import">
                     <ul>
-                        <li>• 협회는 협회 또는 제3자가 제공하는 온·오프라인 서비스/플랫폼 등에서  협회가 관리하는 저작물을 대상으로 자동화 도구(AI, 로봇, 매크로, 스파이더,  스크래퍼 등)를 활용하는 행위를  허용하지 않습니다.</li>
-                        <li>• 협회가 관리하는 음악저작물을 인공지능(AI) 학습에 사용하는 경우 반드시  협회로부터 사전 서면 이용허락을 받아야 합니다.</li>
+                        <li>• 협회는 협회 또는 제3자가 제공하는 온·오프라인 서비스/플랫폼 등에서 협회가 관리하는 저작물을 대상으로 자동화 도구(AI, 로봇, 매크로, 스파이더, 스크래퍼
+                            등)를 활용하는 행위를 허용하지 않습니다.</li>
+                        <li>• 협회가 관리하는 음악저작물을 인공지능(AI) 학습에 사용하는 경우 반드시 협회로부터 사전 서면 이용허락을 받아야 합니다.</li>
                         <li>webmaster@komca.or.kr</li>
                     </ul>
                 </div><!-- .impot end -->
@@ -656,63 +675,63 @@
 
                     </ul>
                 </div><!-- sns end -->
-                    <ul class="gnb">
-                        <li>이용약관</li>
-                        <li>개인정보처리방침</li>
-                        <li>서면결의서</li>
-                        <li>원격지원서비스</li>
-                    </ul><!-- .gnb end -->
+                <ul class="gnb">
+                    <li>이용약관</li>
+                    <li>개인정보처리방침</li>
+                    <li>서면결의서</li>
+                    <li>원격지원서비스</li>
+                </ul><!-- .gnb end -->
             </div><!-- .inner end -->
         </section><!-- #section5 end -->
 
 
 
 
-         <footer class="footer section fp-auto-height" id="footer">
+        <footer class="footer section fp-auto-height" id="footer">
             <div class="inner">
                 <div class="image">
-                   <ul>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                    <li><img src="img/logo1.svg" alt="한음로고"></li>
-                   </ul>
+                    <ul>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                        <li><img src="img/logo1.svg" alt="한음로고"></li>
+                    </ul>
                 </div><!-- .image end -->
                 <div class="text">
-                    <ul>
+                    <ul class="gnb">
                         <li>[07647] 서울특별시 강서구 공항대로 332(내발산동, 한국음악저작권협회)</li>
-                        <li class="tell">TEL : 02-2660-0400</li>
-                        <li class="tell">FAX : 02-2660-0401</li>
+                        <li class="tell"><span>TEL : 02-2660-0400</span> <span>FAX : 02-2660-0401</span></li>
                         <li>COPYRIGHT 2025 BY 김소원. Korea Music Copyright Association, All rights reserved.</li>
-                    </ul>
+                    </ul><!-- .gnb end -->
                 </div><!-- .text end -->
             </div><!-- .inner end -->
         </footer><!-- .footer end -->
     </div><!-- #Fullpage -->
+    <a href="#firstPage" id="goTop" class="top-btn"><img src="img/top 버튼.png" alt=""></a>
 </body>
 
 </html>
