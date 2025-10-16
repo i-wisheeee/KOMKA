@@ -22,58 +22,58 @@
 
 }
 
-/* 사이드바 */
+/* 1. 기존 점 숨기기 */
 #fp-nav ul li a span {
-    display: none;
-    /* 기존 점 숨기기 */
+    display: block;
+
+}
+
+/* 2. 고정된 사이드바 배경 - 모든 li에 적용됨 */
+#fp-nav {
+    width: 66px;
+    height: 100vh;
+    background: url('../img/사이드바.png') no-repeat center;
+    background-size: contain;
+    position: fixed;
+
+    top: 50%;
+    transform: translate(25%, -50%);
+    z-index: 10;
 }
 
 #fp-nav ul li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* 수직 정렬 */
+    justify-content: flex-end;
+    /* 오른쪽 정렬 (사이드바 쪽) */
+    height: 40px;
+    /* 또는 사이드바 버튼 하나의 높이에 맞게 조절 */
+
+}
+
+#fp-nav ul,
+.fp-slidesNav ul {
+    position: absolute;
+    top: 40%;
+    right: 60%;
     display: block;
-    width: 66px;
-    /* 원하는 이미지 크기 */
-    height: 231px;
-    margin-right: 10px;
-    background: url('../img/사이드바.png');
-    /* 기본 이미지 */
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border-radius: 8px;
-    /* 네모나게, 원형이면 50% */
-    transition: all 0.3s;
-
 
 }
 
-
-/* 활성된 섹션에 이미지 다르게 적용 (예: nav1-active.png) */
-#fp-nav ul li a.active {
-    background: url('../img/Point_left.svg');
-    z-index: 99;
-    width: 100%;
-    height: 16.66%;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    /*  transform: scale(1.1); */
-
-}
 
 /* 기본: 밝은 배경용 (검정색 글씨) */
 #fp-nav .fp-tooltip {
     color: #fff;
-    background-color: #000;
-    padding: 2px 5px;
+    background-color: #00000085;
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px #fff inset;
+
+    padding: 4px 5px;
     font-weight: 500;
 }
 
-#fp-nav .fp-tooltip.active {
-    color: #fff;
-    background-color: #000;
-    padding: 2px 5px;
-    font-weight: 700;
-}
 
 /* 헤더 */
 
@@ -185,8 +185,8 @@
     width: 14px;
     object-fit: cover;
     position: absolute;
-    top: 50%;
-    right: 10px;
+    top: 53%;
+    right: 15px;
     transform: translateY(-50%);
     height: 14px;
     cursor: pointer;
@@ -649,27 +649,23 @@
 
 /* 메인3 */
 
-#fullpage #section2 {
-
-    overflow: hidden;
-}
+#fullpage #section2 {}
 
 #fullpage #section2 .inner {
-    padding: 150px;
-    margin-top: 200px;
-    background-color: #010102;
-    width: 100%;
-
+    width: 1500px;
     margin: 0 auto;
+
+
+
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 300px;
+
 
 }
 
 #fullpage #section2 .inner .left {
-    width: 500px;
+    width: 850px;
     position: sticky;
     top: 100px;
 
@@ -693,11 +689,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 500px;
+    width: 570px;
 }
 
 #fullpage #section2 .inner .left .title ul li:nth-child(2) {
-    font-size: 80px;
+    font-size: 90px;
     white-space: nowrap;
 }
 
@@ -745,25 +741,27 @@
 #fullpage #section2 .inner .list {
 
     width: 600px;
-    margin: 0 auto;
+    margin-top: 150px;
+    /*  margin: 0 auto; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    row-gap: 20px;
+
 
 
 }
 
 #fullpage #section2 .inner .list .item {
     width: 250px;
-    height: 100px;
-    margin-top: 100px;
+    height: 175px;
     transition: all 0.7s ease;
+
 
 }
 
 #fullpage #section2 .inner .list .item a {
-
+    width: 100%;
+    height: 100%;
     display: block;
 
 
@@ -775,9 +773,10 @@
     object-fit: cover;
     display: block;
 
+
 }
 
-#fullpage #section2 .inner .list .item:nth-child(2n) a img {
+#fullpage #section2 .inner .list .item:nth-child(2n) {
     margin-top: 100px;
 }
 
@@ -1017,7 +1016,8 @@
 
 #fullpage #section5 .inner {
 
-    padding: 0 50px;
+    width: 1700px;
+    margin: 0 auto;
 }
 
 #fullpage #section5 .inner h2 {
@@ -1088,7 +1088,7 @@
 
 #fullpage #section5 .inner .import ul li {
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -1117,14 +1117,14 @@ body:not(.fp-responsive) .fp-overflow {
 }
 
 #fullpage #section5 .inner .sns {
-    margin-top: 50px;
+    margin-top: 100px;
     cursor: pointer;
 }
 
 #fullpage #section5 .inner .sns ul {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
 
 }
 
@@ -1144,7 +1144,7 @@ body:not(.fp-responsive) .fp-overflow {
     justify-content: center;
     gap: 15px;
     position: relative;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #fullpage #section5 .inner .gnb li {
@@ -1155,7 +1155,7 @@ body:not(.fp-responsive) .fp-overflow {
 }
 
 #fullpage #section5 .inner .gnb li:hover {
-    background-color:  #d4331a9a;
+    background-color: #d4331a9a;
 
     color: #fff;
     transition: all 0.3s ease;
@@ -1234,6 +1234,7 @@ body:not(.fp-responsive) .fp-overflow {
     display: flex;
     flex-direction: column;
     text-align: center;
+    
 
 
 }
@@ -1250,15 +1251,21 @@ body:not(.fp-responsive) .fp-overflow {
     margin: 0 5px;
     /* 각 항목 간 간격 */
 }
+
 .footer .inner .text .gnb {
     width: 100%;
-    background-color: #d4331a9a;
+    background-color: rgba(0, 0, 0, 0.479);
+    color: #fff;
     padding: 100px;
 }
 
 .footer .inner .text .gnb li {
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 20px;
+}
+.footer .inner .text .gnb li:nth-child(1),
+.footer .inner .text .gnb li:nth-child(2) {
+    cursor: pointer;
 }
 
 
