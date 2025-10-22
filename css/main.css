@@ -651,6 +651,39 @@
 
 #fullpage #section2 {}
 
+.cursor {
+    width: 50px;
+    height: 50px;
+    background-color: coral;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: 0.1s;
+    mix-blend-mode: screen;
+    
+    z-index: 999;
+}
+
+.cursor.scale {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+
+}
+
+.cursor.scale::before {
+    content: 'VEIW';
+    color: beige;
+}
+
+
+
 #fullpage #section2 .inner {
     width: 1500px;
     margin: 0 auto;
@@ -757,6 +790,11 @@
     transition: all 0.7s ease;
 
 
+}
+#fullpage #section2 .inner .list .item:hover {
+    opacity: 0.3;
+    filter: blur(0.5px);
+    transform: scale(0.98);
 }
 
 #fullpage #section2 .inner .list .item a {
@@ -980,6 +1018,7 @@
     display: none;
     cursor: pointer;
     transition: opacity 0.8s ease;
+    
 
 }
 
@@ -997,7 +1036,7 @@
     margin-bottom: 24px;
     display: block;
     transition: background-color 0.3s ease-in-out;
-
+    
     cursor: pointer;
 
 }

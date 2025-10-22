@@ -7,124 +7,111 @@
     <title>index</title>
     <link rel="stylesheet" href="lib/fullpage.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/jquery-3.7.1.min.js"></script>
     <script src="lib/fullpage.js"></script>
+
     <script>
         window.onload = () => {
 
-
+            //  fullpage.js 초기화
+            const topBtn = document.getElementById('goTop');
             var myFullpage = new fullpage('#fullpage', {
                 sectionsColor: ['#fff', '#fff', '#010102', '#fff', '#fff', '#fff', '#fff'],
                 anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage'],
                 navigation: true,
                 navigationTooltips: ['MainPage', '사용자별 자주찾는 메뉴', 'KOMCA TODAY', 'KOMKA MALL', '자주 묻는 질문', 'CONTACT'],
                 showActiveTooltip: true,
-                menu: '#menu'
+                menu: '#menu',
+
+                afterLoad: function (origin, destination, direction) {
+                    if (destination.index >= 1) {
+                        topBtn?.classList.add('show');
+                    } else {
+                        topBtn?.classList.remove('show');
+                    }
+                }
             });
 
+            // 탑버튼 클릭
+            topBtn?.addEventListener('click', () => {
+                fullpage_api.moveTo(1);
+            });
 
-
-
+            //  메뉴 열고 닫기
             const menuBtn = document.querySelector('.menu_btn');
             const nav = document.querySelector('.nav');
             const closeBtn = document.querySelector('.nav .close_btn');
 
-            // 메뉴 열기
-            menuBtn.addEventListener('click', (e) => {
-                e.preventDefault();  // a태그 기본동작 막기
-                nav.classList.add('active');
-                document.body.classList.add('no-scroll');  // 스크롤 막을 때 사용 가능
+            menuBtn?.addEventListener('click', (e) => {
+                e.preventDefault();
+                nav?.classList.add('active');
+                document.body.classList.add('no-scroll');
             });
 
-            // 메뉴 닫기
-            closeBtn.addEventListener('click', () => {
-                nav.classList.remove('active');
+            closeBtn?.addEventListener('click', () => {
+                nav?.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             });
 
+            // 탭메뉴 처리 - 1 (depth-01)
+            const tabMenu1 = document.querySelectorAll('.tab_menu li');
+            const tabCont1 = document.querySelectorAll('.depth-01');
 
-
-            //탭메뉴
-            let tabMenu = document.querySelectorAll('.tab_menu li');
-            let tabCont = document.querySelectorAll('.depth-01');
-
-            tabMenu.forEach((tab, idx) => {
+            tabMenu1.forEach((tab, idx) => {
                 tab.addEventListener('click', () => {
-                    // 모든 탭과 컨텐츠 active 제거
-                    tabMenu.forEach(t => t.classList.remove('active'));
-                    tabCont.forEach(c => c.classList.remove('active'));
+                    tabMenu1.forEach(t => t.classList.remove('active'));
+                    tabCont1.forEach(c => c.classList.remove('active'));
 
-                    // 클릭된 탭과 해당 컨텐츠에 active 부여
                     tab.classList.add('active');
-                    tabCont[idx].classList.add('active');
+                    tabCont1[idx].classList.add('active');
                 });
             });
 
+            //  탭메뉴 처리 - 2 (list)
+            const tabMenu2 = document.querySelectorAll('.tab_menu li');
+            const tabCont2 = document.querySelectorAll('.list');
+
+            tabMenu2.forEach((tab, idx) => {
+                tab.addEventListener('click', () => {
+                    tabMenu2.forEach(t => t.classList.remove('active'));
+                    tabCont2.forEach(c => c.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    tabCont2[idx].classList.add('active');
+                });
+            });
+
+            //  팝업 닫기
             const popup = document.querySelector('.popup');
             const popupBtn = document.querySelector('.popup button');
+
             if (popup && popupBtn) {
                 popupBtn.addEventListener('click', () => {
                     popup.style.display = 'none';
                 });
-            }//popup
-
-
-
-            let = tabMenu = document.querySelectorAll('.tab_menu li');
-            let = tabCont = document.querySelectorAll('.list');
-
-            for (let i = 0; i < tabMenu.length; i++) {
-
-                tabMenu[i].addEventListener('click', () => {
-
-
-                    tabMenu.forEach(tabMenuIndex => {
-                        tabMenuIndex.classList.remove('active');
-                    });
-
-                    tabMenu[i].classList.add('active');
-
-                    tabCont.forEach(tabContIndex => {
-                        tabContIndex.classList.remove('active');
-                    });
-
-                    tabCont[i].classList.add('active');
-
-
-
-
-                });
             }
 
-            //탑버튼
-            window.onload = () => {
-                const topBtn = document.getElementById('goTop');
 
-                var myFullpage = new fullpage('#fullpage', {
-                    sectionsColor: ['#fff', '#fff', '#010102', '#fff', '#fff', '#fff', '#fff'],
-                    anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'fifthPage', 'sixthPage'],
-                    navigation: true,
-                    navigationTooltips: ['MainPage', '사용자별 자주찾는 메뉴', 'KOMCA TODAY', 'KOMKA MALL', '자주 묻는 질문', 'CONTACT'],
-                    showActiveTooltip: true,
-                    menu: '#menu',
-
-                    afterLoad: function (origin, destination, direction) {
-                        if (destination.index >= 1) {
-                            topBtn.classList.add('show');  // 2페이지 이상이면 버튼 보이기
-                        } else {
-                            topBtn.classList.remove('show'); // 1페이지면 숨기기
-                        }
-                    }
+            $(window).on('mousemove', function (e) {
+                $('.cursor').css({
+                    left: e.pageX,
+                    top: e.pageY
                 });
+            });
 
-                topBtn.addEventListener('click', () => {
-                    fullpage_api.moveTo(1);
-                });
-            };//top버튼
+            $('.item').on('mouseenter', function () {
+                $('.cursor').addClass('scale');
+            });
 
-           
+            $('.item').on('mouseleave', function () {
+                $('.cursor').removeClass('scale');
+            });
 
 
-        }; //script end
+
+        }; 
     </script>
 
 
@@ -431,6 +418,7 @@
 
         <!-- 메인3 -->
         <section class="section" id="section2">
+            <div class="cursor"></div>
             <div class="inner">
                 <div class="left">
                     <div class="title">
